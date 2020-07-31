@@ -111,7 +111,7 @@ namespace USPandemicTracker {
 					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			}
-
+			//
 			else if (stateObject.getDataName() == "ACTIVE CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "ACTIVE CASES BY DAY (30 DAYS ONSET)";
 				this->Text = "ACTIVE CASES";
