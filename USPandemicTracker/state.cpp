@@ -59,6 +59,7 @@ void State::getStateData(string* line1, string* line2, string* line3) {
     }
     else if (dataSetType == "ACTIVE CASES") {
         result1 = "Active Cases: ";
+
         //+ to_string(calcActiveCases(dailyNewCases, dailyNewDeaths, days))
         //+ " as of " + getDate(startDay, startMonth, startYear, days - 1);
 

@@ -38,6 +38,7 @@ public:
     std::string getDataName() { return dataSetType; }
     int* getDailyCases() { return dailyNewCases; }
     int* getDailyDeaths() { return dailyNewDeaths; }
+    int* getActiveCases() { return activeCases;  }
     int getDays() { return days; }
 
     //setters
