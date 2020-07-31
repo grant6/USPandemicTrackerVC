@@ -73,7 +73,7 @@ namespace USPandemicTracker {
 			series1->Legend = L"Legend1";
 			series1->Name = L"Data";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(422, 360);
+			this->chart1->Size = System::Drawing::Size(627, 579);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -81,7 +81,7 @@ namespace USPandemicTracker {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(444, 382);
+			this->ClientSize = System::Drawing::Size(649, 601);
 			this->Controls->Add(this->chart1);
 			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MyForm1";
