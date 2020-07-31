@@ -54,7 +54,8 @@ namespace USPandemicTracker {
 	private: System::Windows::Forms::Button^ statButton;
 	private: System::Windows::Forms::Panel^ statPanel;
 	private: System::Windows::Forms::TextBox^ statTextBox;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ graphButton;
+
 
 
 
@@ -81,7 +82,7 @@ namespace USPandemicTracker {
 			this->statButton = (gcnew System::Windows::Forms::Button());
 			this->statPanel = (gcnew System::Windows::Forms::Panel());
 			this->statTextBox = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->graphButton = (gcnew System::Windows::Forms::Button());
 			this->statPanel->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -187,25 +188,25 @@ namespace USPandemicTracker {
 			this->statTextBox->Size = System::Drawing::Size(384, 174);
 			this->statTextBox->TabIndex = 0;
 			// 
-			// button1
+			// graphButton
 			// 
-			this->button1->BackColor = System::Drawing::Color::Transparent;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->graphButton->BackColor = System::Drawing::Color::Transparent;
+			this->graphButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(415, 331);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(155, 39);
-			this->button1->TabIndex = 7;
-			this->button1->Text = L"Get Graph";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->graphButton->Location = System::Drawing::Point(415, 331);
+			this->graphButton->Name = L"graphButton";
+			this->graphButton->Size = System::Drawing::Size(155, 39);
+			this->graphButton->TabIndex = 7;
+			this->graphButton->Text = L"Get Graph";
+			this->graphButton->UseVisualStyleBackColor = false;
+			this->graphButton->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
 			// MyForm
 			// 
 			this->BackColor = System::Drawing::Color::Black;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(844, 605);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->graphButton);
 			this->Controls->Add(this->statPanel);
 			this->Controls->Add(this->statButton);
 			this->Controls->Add(this->dataComboBox);
@@ -252,8 +253,14 @@ namespace USPandemicTracker {
 		std::string state = msclr::interop::marshal_as<std::string>(stateComboBox->Text);
 		std::string data = msclr::interop::marshal_as<std::string>(dataComboBox->Text);
 		State stateObject(state, data);
-		MyForm1^ form1 = gcnew MyForm1(stateObject);
-		form1->Show();
+		if (stateObject.getDataName() == "DAILY NEW CASES" || 
+			stateObject.getDataName() == "DAILY NEW DEATHS") {
+			MyForm1^ form1 = gcnew MyForm1(stateObject);
+			form1->Show();
+		}
+		else {
+			MessageBox::Show(" A Graph is not available for this data set.");
+		}
 	}
 };
 }
