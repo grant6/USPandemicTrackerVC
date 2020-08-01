@@ -254,7 +254,10 @@ namespace USPandemicTracker {
 		std::string data = msclr::interop::marshal_as<std::string>(dataComboBox->Text);
 		State stateObject(state, data);
 		if (stateObject.getDataName() == "DAILY NEW CASES" || 
-			stateObject.getDataName() == "DAILY NEW DEATHS") {
+			stateObject.getDataName() == "DAILY NEW DEATHS" ||
+			stateObject.getDataName() == "TOTAL CASES" ||
+			stateObject.getDataName() == "TOTAL DEATHS" ||
+		    stateObject.getDataName() == "ACTIVE CASES") {
 			MyForm1^ form1 = gcnew MyForm1(stateObject);
 			form1->Show();
 		}

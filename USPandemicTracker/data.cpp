@@ -163,9 +163,9 @@ int calcTotalCases(int* a, int size) {
 
     int totalCases;
     int i = 0;
-    while (size != i) {
+    while (size != i ) {
         if (i == 0)  totalCases = *a;
-        else        totalCases = totalCases + *(a + i);
+        else         totalCases = totalCases + *(a + i);
         i++;
     }
     return totalCases;
@@ -282,8 +282,6 @@ int* calcActiveCases(int* a, int* b, int size) {
         i++;
     }
 
-    cout << activeCasesArray[size - 1] << endl;
-    printActiveCasesTextFile(activeCasesArray, size);
 
     return activeCasesArray;
 }

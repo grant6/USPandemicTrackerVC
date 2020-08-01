@@ -39,6 +39,8 @@ public:
     int* getDailyCases() { return dailyNewCases; }
     int* getDailyDeaths() { return dailyNewDeaths; }
     int* getActiveCases() { return activeCases;  }
+    int* getTotalCases() { return totalCases; }
+    int* getTotalDeaths() { return totalDeaths;  }
     int getDays() { return days; }
 
     //setters
