@@ -245,7 +245,11 @@ namespace USPandemicTracker {
 		String^ s2 = gcnew System::String(line2.c_str());
 		String^ s3 = gcnew System::String(line3.c_str());
 
-		statTextBox->Text = s1;
+		String^ stateName = gcnew System::String(stateObject.getName().c_str());
+		String^ dataName = gcnew System::String(stateObject.getDataName().c_str());
+
+		statTextBox->Text = dataName + " (" + stateName + ")";
+		statTextBox->Text += "\r\n" + s1;
 		statTextBox->Text += "\r\n" + s2;
 		statTextBox->Text += "\r\n" + s3;
 	}
@@ -253,17 +257,8 @@ namespace USPandemicTracker {
 		std::string state = msclr::interop::marshal_as<std::string>(stateComboBox->Text);
 		std::string data = msclr::interop::marshal_as<std::string>(dataComboBox->Text);
 		State stateObject(state, data);
-		if (stateObject.getDataName() == "DAILY NEW CASES" || 
-			stateObject.getDataName() == "DAILY NEW DEATHS" ||
-			stateObject.getDataName() == "TOTAL CASES" ||
-			stateObject.getDataName() == "TOTAL DEATHS" ||
-		    stateObject.getDataName() == "ACTIVE CASES") {
-			MyForm1^ form1 = gcnew MyForm1(stateObject);
-			form1->Show();
-		}
-		else {
-			MessageBox::Show(" A Graph is not available for this data set.");
-		}
+		MyForm1^ form1 = gcnew MyForm1(stateObject);
+		form1->Show();
 	}
 };
 }

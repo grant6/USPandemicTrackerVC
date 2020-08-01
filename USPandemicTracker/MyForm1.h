@@ -97,11 +97,12 @@ namespace USPandemicTracker {
 			int* arr4;
 			int* arr5;
 
+			String^ stateName = gcnew System::String(stateObject.getName().c_str());
 			chart1->ChartAreas["ChartArea1"]->AxisX->Title = "DAYS SINCE JAN 21, 2020";
 
 			if (stateObject.getDataName() == "DAILY NEW CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "REPORTED CASES PER DAY";
-				this->Text = "DAILY NEW CASES";
+				this->Text = "DAILY NEW CASES (" + stateName + ")";
 				arr1 = stateObject.getDailyCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
 					chart1->Series["Data"]->Points->AddXY("", arr1[i]);
@@ -109,8 +110,7 @@ namespace USPandemicTracker {
 			}
 			else if (stateObject.getDataName() == "DAILY NEW DEATHS") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "REPORTED DEATHS PER DAY";
-				this->Text = "DAILY NEW DEATHS";
-				arr2 = stateObject.getDailyDeaths();
+				this->Text = "DAILY NEW DEATHS (" + stateName + ")";				arr2 = stateObject.getDailyDeaths();
 				for (int i = 0; i < stateObject.getDays(); i++) {
 					chart1->Series["Data"]->Points->AddXY("", arr2[i]);
 				}
@@ -118,7 +118,7 @@ namespace USPandemicTracker {
 
 			else if (stateObject.getDataName() == "TOTAL CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "TOTAL CASES BY DAY";
-				this->Text = "TOTAL CASES";
+				this->Text = "TOTAL CASES (" + stateName + ")";
 				arr3 = stateObject.getTotalCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
 					chart1->Series["Data"]->Points->AddXY("", arr3[i]);
@@ -127,7 +127,7 @@ namespace USPandemicTracker {
 
 			else if (stateObject.getDataName() == "TOTAL DEATHS") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "TOTAL DEATHS BY DAY";
-				this->Text = "TOTAL DEATHS";
+				this->Text = "TOTAL DEATHS (" + stateName + ")";
 				arr4 = stateObject.getTotalDeaths();
 				for (int i = 0; i < stateObject.getDays(); i++) {
 					chart1->Series["Data"]->Points->AddXY("", arr4[i]);
@@ -136,7 +136,7 @@ namespace USPandemicTracker {
 
 			else if (stateObject.getDataName() == "ACTIVE CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "ACTIVE CASES BY DAY (30 DAYS ONSET)";
-				this->Text = "ACTIVE CASES";
+				this->Text = "ACTIVE CASES (" + stateName + ")";
 				arr5 = stateObject.getActiveCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
 					chart1->Series["Data"]->Points->AddXY("", arr5[i]);
