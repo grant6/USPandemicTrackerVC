@@ -11,6 +11,8 @@
 #ifndef PANDEMICTRACKER_STATE_H
 #define PANDEMICTRACKER_STATE_H
 
+#define MAX 500
+
 /* State Object */
 class State {
 private:

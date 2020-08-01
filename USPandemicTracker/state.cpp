@@ -58,10 +58,11 @@ void State::getStateData(string* line1, string* line2, string* line3) {
             + " as of " + getDate(startDay, startMonth, startYear, days - 1);
     }
     else if (dataSetType == "ACTIVE CASES") {
-       // result1 = "Active Cases: ";
 
-        //+ to_string(calcActiveCases(dailyNewCases, dailyNewDeaths, days))
-        //+ " as of " + getDate(startDay, startMonth, startYear, days - 1);
+
+        result1 = "Active Cases: "
+        + to_string(calcActiveCases(dailyNewCases, dailyNewDeaths, days))
+        + " as of " + getDate(startDay, startMonth, startYear, days - 1);
 
     }
 
@@ -81,7 +82,7 @@ State::State(string n, string d) {
     days = findNumDays(dailyCasesFile, name);
     totalCases = calcTotalCasesByDay(dailyNewCases, days);
     totalDeaths = calcTotalDeathsByDay(dailyNewDeaths, days);
-    activeCases = calcActiveCases(dailyNewCases, dailyNewDeaths, days);
+    activeCases = calcActiveCasesByDay(dailyNewCases, dailyNewDeaths, days);
 
 
 }

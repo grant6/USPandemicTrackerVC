@@ -179,7 +179,7 @@ int calcTotalCases(int* a, int size) {
  *******************************************************************/
 int* calcTotalCasesByDay(int* a, int size) {
 
-    static int totalCasesArray[200];
+    static int totalCasesArray[MAX];
     int i = 0;
     while (size != i) {
         if (i == 0) totalCasesArray[i] = *a;
@@ -221,7 +221,7 @@ int calcTotalDeaths(int* a, int size) {
  *******************************************************************/
 int* calcTotalDeathsByDay(int* a, int size) {
 
-    static int totalDeathsArray[200];
+    static int totalDeathsArray[MAX];
     int i = 0;
     while (size != i) {
         if (i == 0) totalDeathsArray[i] = *a;
@@ -242,7 +242,7 @@ int* calcTotalDeathsByDay(int* a, int size) {
  * @param size
  * @return activeCasesArray
  *******************************************************************/
-int* calcActiveCases(int* a, int* b, int size) {
+int* calcActiveCasesByDay(int* a, int* b, int size) {
 
     // a daily cases
     // b daily deaths
@@ -251,11 +251,12 @@ int* calcActiveCases(int* a, int* b, int size) {
     int j = 0;
     int k = 0;
 
-    int difference[200];
-    static int activeCasesArray[200];
+    int difference[MAX];
+    static int activeCasesArray[MAX];
 
     while (k != size) {
         difference[k] = (*a) - (*b);
+        activeCasesArray[k] = 0;
         a++; b++; k++;
     }
 
@@ -277,14 +278,22 @@ int* calcActiveCases(int* a, int* b, int size) {
             j = 0;
         }
 
-        //FIXME Print the results to a text file
-
         i++;
     }
 
 
     return activeCasesArray;
 }
+
+ int calcActiveCases(int* a, int* b, int size) {
+    int* arr;
+    int active;
+
+    arr = calcActiveCasesByDay(a, b, size);
+
+    active = arr[size-1];
+    return active;
+} 
 
 /*******************************************************************
  * This method prints the day-by-day active cases to a text file.
