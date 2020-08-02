@@ -24,7 +24,7 @@ int* fileRead(std::string filename, std::string stateName) {
     std::string line;
     bool timeToRead = false;
     int* array;
-    array = (int*)malloc(200 * sizeof(int));
+    array = (int*)malloc(250 * sizeof(int));
     int i = 0;
 
     if (myFile.is_open()) {
