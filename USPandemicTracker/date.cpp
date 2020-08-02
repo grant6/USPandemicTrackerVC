@@ -38,7 +38,6 @@ int numDaysInMonth(int monthNum, int year) {
             return 31;
         }
     }
-    cout << "Error: numDaysInMonth() function failed." << endl;
     exit(1);
 }
 
@@ -47,8 +46,8 @@ int numDaysInMonth(int monthNum, int year) {
  * @param month
  * @return
  */
-string getMonth(int month) {
-    string months[] = { "January", "February", "March", "April", "May",
+std::string getMonth(int month) {
+    std::string months[] = { "January", "February", "March", "April", "May",
         "June", "July", "August", "September", "October", "November",
         "December" };
     return months[month - 1];
@@ -76,5 +75,5 @@ std::string getDate(int startDay, int startMonth, int startYear, int numDays) {
         totalDays += numDaysInMonth(month, year);
     }
     int leftInMonth = numDaysInMonth(month, year) - (totalDays - numDays);
-    return (getMonth(month) + " " + to_string(leftInMonth) + ", " + to_string(year));
+    return (getMonth(month) + " " + std::to_string(leftInMonth) + ", " + std::to_string(year));
 }

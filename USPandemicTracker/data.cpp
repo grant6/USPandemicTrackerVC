@@ -18,10 +18,10 @@
  * @param state name of state to search for
  * @return array list of data
  ******************************************************************/
-int* fileRead(string filename, string stateName) {
+int* fileRead(std::string filename, std::string stateName) {
 
-    ifstream myFile(filename);
-    string line;
+    std::ifstream myFile(filename);
+    std::string line;
     bool timeToRead = false;
     int* array;
     array = (int*)malloc(200 * sizeof(int));
@@ -125,9 +125,9 @@ int arrayMinVal(int* a, int size, int* numDays) {
  * @param stateName
  * @return i
  *******************************************************************/
-int findNumDays(string filename, string stateName) {
-    ifstream myFile(filename);
-    string line;
+int findNumDays(std::string filename, std::string stateName) {
+    std::ifstream myFile(filename);
+    std::string line;
     bool timeToRead = false;
     int i = 0;
 
@@ -147,7 +147,6 @@ int findNumDays(string filename, string stateName) {
         myFile.close();
     }
     else {
-        cout << "Error: daily_deaths.txt not found" << endl;
         exit(1);
     }
     return i;
@@ -161,7 +160,7 @@ int findNumDays(string filename, string stateName) {
  *******************************************************************/
 int calcTotalCases(int* a, int size) {
 
-    int totalCases;
+    int totalCases{};
     int i = 0;
     while (size != i ) {
         if (i == 0)  totalCases = *a;
@@ -188,7 +187,6 @@ int* calcTotalCasesByDay(int* a, int size) {
         a++; i++;
     }
 
-    printDailyNewCasesTextFile(totalCasesArray, size);
     return totalCasesArray;
 }
 
@@ -201,7 +199,7 @@ int* calcTotalCasesByDay(int* a, int size) {
  *******************************************************************/
 int calcTotalDeaths(int* a, int size) {
 
-    int totalDeaths;
+    int totalDeaths{};
     int i = 0;
     while (size != i) {
         if (i == 0)  totalDeaths = *a;
@@ -229,7 +227,6 @@ int* calcTotalDeathsByDay(int* a, int size) {
         a++; i++;
     }
 
-    printDailyNewDeathsTextFile(totalDeathsArray, size);
     return totalDeathsArray;
 }
 
@@ -301,63 +298,3 @@ int* calcActiveCasesByDay(int* a, int* b, int size) {
     active = arr[size-1];
     return active;
 } 
-
-/*******************************************************************
- * This method prints the day-by-day active cases to a text file.
- * @param a
- * @param size
- *******************************************************************/
-void printActiveCasesTextFile(int* a, int size) {
-
-    int i = 0;
-    ofstream activeFile;
-    activeFile.open("active_cases.txt");
-    activeFile << "COPY AND PASTE THIS DATA INTO A GRAPHING TOOL TO VISUALIZE " << endl;
-    activeFile << "    THE TREND IN ACTIVE CASES FOR THE STATE YOU SELECTED   " << endl;
-
-    while (i != size) {
-        activeFile << *a << endl;
-        a++; i++;
-    }
-
-}
-
-/*******************************************************************
- * This method prints the day-by-day new cases to a text file.
- * @param a
- * @param size
- *******************************************************************/
-void printDailyNewCasesTextFile(int* a, int size) {
-
-    int i = 0;
-    ofstream dailyCaseFile;
-    dailyCaseFile.open("total_daily_cases.txt");
-    dailyCaseFile << "COPY AND PASTE THIS DATA INTO A GRAPHING TOOL TO VISUALIZE " << endl;
-    dailyCaseFile << "    THE TREND IN ACTIVE CASES FOR THE STATE YOU SELECTED   " << endl;
-
-    while (i != size) {
-        dailyCaseFile << *a << endl;
-        a++; i++;
-    }
-
-}
-
-/*******************************************************************
- * This method prints the day-by-day new deaths to a text file.
- * @param a
- * @param size
- *******************************************************************/
-void printDailyNewDeathsTextFile(int* a, int size) {
-
-    int i = 0;
-    ofstream dailyDeathFile;
-    dailyDeathFile.open("total_daily_deaths.txt");
-    dailyDeathFile << "COPY AND PASTE THIS DATA INTO A GRAPHING TOOL TO VISUALIZE " << endl;
-    dailyDeathFile << "    THE TREND IN ACTIVE CASES FOR THE STATE YOU SELECTED   " << endl;
-
-    while (i != size) {
-        dailyDeathFile << *a << endl;
-        a++; i++;
-    }
-
-}

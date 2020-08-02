@@ -4,9 +4,7 @@
 // Created by grant on 7/9/2020.
 //
 
-
 #include <string>
-
 
 #ifndef PANDEMICTRACKER_STATE_H
 #define PANDEMICTRACKER_STATE_H
@@ -28,7 +26,7 @@ private:
 
 public:
     //State Constructors
-    State();
+    State(void);
     State(std::string n, std::string d);
 
     //Methods
