@@ -192,7 +192,6 @@ int* calcTotalCasesByDay(int* a, int size) {
     return totalCasesArray;
 }
 
-
 /*******************************************************************
  * This method calculates the total deaths in a given state and then
  * prints those day-by-day cases to a text file.
@@ -285,6 +284,14 @@ int* calcActiveCasesByDay(int* a, int* b, int size) {
     return activeCasesArray;
 }
 
+/*******************************************************************
+ * This method calculates the active cases in a given state, and then
+ * returns the current day's active cases.
+ * @param a
+ * @param b
+ * @param size
+ * @return active
+ *******************************************************************/
  int calcActiveCases(int* a, int* b, int size) {
     int* arr;
     int active;
