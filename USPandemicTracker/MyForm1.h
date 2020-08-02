@@ -91,59 +91,54 @@ namespace USPandemicTracker {
 
 		}
 		void InitializeGraph(State stateObject) {
-			int* arr1;
-			int* arr2;
-			int* arr3;
-			int* arr4;
-			int* arr5;
+			int* arr;
 
+			String^ stateName = gcnew System::String(stateObject.getName().c_str());
 			chart1->ChartAreas["ChartArea1"]->AxisX->Title = "DAYS SINCE JAN 21, 2020";
 
 			if (stateObject.getDataName() == "DAILY NEW CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "REPORTED CASES PER DAY";
-				this->Text = "DAILY NEW CASES";
-				arr1 = stateObject.getDailyCases();
+				this->Text = "DAILY NEW CASES (" + stateName + ")";
+				arr = stateObject.getDailyCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
-					chart1->Series["Data"]->Points->AddXY("", arr1[i]);
+					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			}
 			else if (stateObject.getDataName() == "DAILY NEW DEATHS") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "REPORTED DEATHS PER DAY";
-				this->Text = "DAILY NEW DEATHS";
-				arr2 = stateObject.getDailyDeaths();
+				this->Text = "DAILY NEW DEATHS (" + stateName + ")";				
+				arr = stateObject.getDailyDeaths();
 				for (int i = 0; i < stateObject.getDays(); i++) {
-					chart1->Series["Data"]->Points->AddXY("", arr2[i]);
+					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			}
 
 			else if (stateObject.getDataName() == "TOTAL CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "TOTAL CASES BY DAY";
-				this->Text = "TOTAL CASES";
-				arr3 = stateObject.getTotalCases();
+				this->Text = "TOTAL CASES (" + stateName + ")";
+				arr = stateObject.getTotalCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
-					chart1->Series["Data"]->Points->AddXY("", arr3[i]);
+					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			}
 
 			else if (stateObject.getDataName() == "TOTAL DEATHS") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "TOTAL DEATHS BY DAY";
-				this->Text = "TOTAL DEATHS";
-				arr4 = stateObject.getTotalDeaths();
+				this->Text = "TOTAL DEATHS (" + stateName + ")";
+				arr = stateObject.getTotalDeaths();
 				for (int i = 0; i < stateObject.getDays(); i++) {
-					chart1->Series["Data"]->Points->AddXY("", arr4[i]);
+					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			}
 
 			else if (stateObject.getDataName() == "ACTIVE CASES") {
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "ACTIVE CASES BY DAY (30 DAYS ONSET)";
-				this->Text = "ACTIVE CASES";
-				arr5 = stateObject.getActiveCases();
+				this->Text = "ACTIVE CASES (" + stateName + ")";
+				arr = stateObject.getActiveCases();
 				for (int i = 0; i < stateObject.getDays(); i++) {
-					chart1->Series["Data"]->Points->AddXY("", arr5[i]);
+					chart1->Series["Data"]->Points->AddXY("", arr[i]);
 				}
 			} 
-
-
 		}
 #pragma endregion
 	};
