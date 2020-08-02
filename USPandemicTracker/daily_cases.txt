@@ -785,6 +785,7 @@ Arkansas
 791
 752
 662
+
 California
 0
 0
@@ -7286,7 +7287,7 @@ Oregon
 344
 307
 
-Pennslyvania
+Pennsylvania
 0
 0
 0

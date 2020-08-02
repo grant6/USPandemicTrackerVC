@@ -83,6 +83,4 @@ State::State(std::string n, std::string d) {
     totalCases = calcTotalCasesByDay(dailyNewCases, days);
     totalDeaths = calcTotalDeathsByDay(dailyNewDeaths, days);
     activeCases = calcActiveCasesByDay(dailyNewCases, dailyNewDeaths, days);
-
-
 }
